@@ -10,4 +10,9 @@ class Evento extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function sesiones()
+    {
+        return $this->hastMany(Sesion::class);
+    }
 }
