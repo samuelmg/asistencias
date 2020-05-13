@@ -14,7 +14,8 @@ class EventoController extends Controller
      */
     public function index()
     {
-        //
+        $eventos = Evento::all();
+        return view('eventos.eventoIndex', compact('eventos'));
     }
 
     /**
@@ -24,7 +25,7 @@ class EventoController extends Controller
      */
     public function create()
     {
-        //
+        return view('eventos.eventoForm');
     }
 
     /**
@@ -35,7 +36,8 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('evento.show', $evento->id)
+            ->with(['mensaje' => 'Evento creado con éxito.']);
     }
 
     /**
@@ -46,7 +48,7 @@ class EventoController extends Controller
      */
     public function show(Evento $evento)
     {
-        //
+        return view('eventos.eventoShow', compact('evento'));
     }
 
     /**
@@ -57,7 +59,7 @@ class EventoController extends Controller
      */
     public function edit(Evento $evento)
     {
-        //
+        return view('eventos.eventoForm', compact('evento'));
     }
 
     /**
@@ -69,7 +71,8 @@ class EventoController extends Controller
      */
     public function update(Request $request, Evento $evento)
     {
-        //
+        return redirect()->route('evento.show', $evento->id)
+            ->with(['mensaje' => 'Evento actualizado con éxito.']);
     }
 
     /**
@@ -80,6 +83,7 @@ class EventoController extends Controller
      */
     public function destroy(Evento $evento)
     {
-        //
+        $evento->delete();
+        return redirect()->route('evento.index')->with(['mensaje' => 'Evento eliminado con éxito.']);
     }
 }

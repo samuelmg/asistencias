@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('evento', 'EventoController')->middleware('auth');
+Route::resource('evento.sesion', 'EventoSesionController')->middleware('auth');

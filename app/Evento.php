@@ -13,6 +13,6 @@ class Evento extends Model
 
     public function sesiones()
     {
-        return $this->hastMany(Sesion::class);
+        return $this->hasMany(Sesion::class);
     }
 }
