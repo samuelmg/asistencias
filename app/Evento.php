@@ -15,4 +15,9 @@ class Evento extends Model
     {
         return $this->hasMany(Sesion::class);
     }
+
+    public function personas()
+    {
+        return $this->belongsToMany(Persona::class);
+    }
 }
